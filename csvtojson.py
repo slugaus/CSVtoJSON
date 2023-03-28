@@ -14,8 +14,7 @@ def convertJSON(file, outdir, outfile, key):
     with open(file, "r", encoding='utf-8-sig') as file:     #Open CSV file and remove embedded BOM, BOM causes issues when specifying primary key
         fileCSV = csv.DictReader(file)                      #Read CSV file with DictReader method, allows easier converting to JSON
         if (key is None):                                   #Check if there is a -k argument  
-            for row in fileCSV:                             #If no key specified, append dictionaries without primary key
-                data = [row for row in fileCSV]
+            data = [row for row in fileCSV]                 #If no key specified, append dictionaries without primary key
                     
         elif key == "auto":                                 #If key is set to auto, use i from enumerate() tuple as the primary key
             data = {}                                           
